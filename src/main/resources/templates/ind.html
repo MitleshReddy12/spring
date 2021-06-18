@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+h1   {color:White; text-align:center; font-family:Times new roman}
+h2   {color: white;}
+h2   {text-align:center;}
+h3	 {text-align:center;}
+p	 {text-align:center; color:white;}
+
+.navbar-header{float:left;}
+.navbar-nav{float:right;}
+
+</style>
+</head>
+<body>
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+		<h1>Telangana State Electricity Board</h1>
+			<div class="navbar-header">
+			
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/admin}">Home</a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/ind}">View Consumers</a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}">Tariff Plans </a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}">view Complaint</a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}">Outage</a>
+				
+			</div>
+	<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+			
+		</div>	
+	</nav>
+	<br><br><br>
+<div>
+	<h3 >Consumer Details</h3>
+</div>
+	
+		<div>
+			   
+		 
+		     <h3><a  th:href="@{'/addnewconsumers'}">Add new</a></h3>   
+	    </div>
+	
+	
+<div class="col-sm-10" align = "center">
+                 <div class="panel-body" align = "center" >
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      		<!--  <th>S.No</th>-->
+      		<th>USC No</th>
+            <th>Consumer Name</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Pincode</th>
+            <th>Prev_Reading</th>
+            <th>Pres_Reading</th>
+            <th>Dues</th>
+            <th>BillAmount</th>
+            <th>Edit</th>
+            <th>Delete</th>
+   	</tr>
+  </thead>
+  <tbody>
+    	<tr th:each="consumer : ${listconsumer}">
+		<!--  <td th:text="${consumer.id}">ID</td>-->
+		<td th:text="${consumer.uscNo}">USC Name</td>
+		<td th:text="${consumer.consumername}">Consumer Name</td>
+		<td th:text="${consumer.mobile}">Mobile</td>
+		<td th:text="${consumer.address}">Address</td>
+		<td th:text="${consumer.pincode}">Pincode</td>
+		<td th:text="${consumer.prev_reading}">Previous Reading</td>
+		<td th:text="${consumer.present_reading}">Present Reading</td>
+		<td th:text="${consumer.dues}">Dues</td>
+		<td th:text="${consumer.bill}">Total Bill</td>				
+		<td>
+			<a th:href="@{'/edit/' + ${consumer.id}}">Edit</a>
+		</td>							    
+		<td>
+			<a th:href="@{'/delete/' + ${consumer.id}}">Delete</a>
+		</td>		    
+		</tr> 
+   
+  </tbody>
+</table>
+                    
+</div>
+</div> 
+	<nav class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="container">
+			<div class="navbar-footer" >
+			
+			<h2><span>&copy;</span>Telangana State Electricity Board</h2>
+			<p>Toll free number:1800 2455 1854</p>
+			
+		</div>
+		</div>
+		</nav>
+	
+</body>
+</html>

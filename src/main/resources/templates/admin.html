@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+h1   {color:White; text-align:center; font-family:Times new roman}
+h2   {color: white;}
+h2   {text-align:center;}
+h3	 {text-align:center;}
+p	 {text-align:center; color:white;}
+a    {color:white;}
+.navbar-header{float:left;}
+.navbar-nav{float:right;}
+
+</style>
+</head>
+<body>
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+		<h1>Telangana State Electricity Board</h1>
+			<div class="navbar-header">
+			
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/admin}">Home</a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/ind}">View Consumers</a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}">Tariff Plans </a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}"></a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}">view Complaint</a>
+				
+				<a class="navbar-brand" href="#" th:href="@{/}">Outage</a>
+				
+			</div>
+	<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+			
+		</div>	
+	</nav>
+
+	<br>
+	<br><br><br><br>
+	<br>
+
+	<div class="container">
+		<h3>Admin Page</h3>
+		Welcome <span sec:authentication="principal.username"> User</span>
+		
+	</div>
+	<!-- create navigation bar ( footer) -->
+	<nav class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="container">
+			<div class="navbar-footer" >
+			
+			<h2><span>&copy;</span>Telangana State Electricity Board</h2>
+			<p>Toll free number:1800 2455 1854</p>
+			
+		</div>
+		</div>
+		</nav>
+</body>
+</html>

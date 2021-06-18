@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>New User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    <form class="row g-3" action="#" th:action="@{/GenerateBill}" th:object="${consumer}" method="post">
+   
+  <div class="col-md-6">
+    <label class="form-label" >USC NO:</label> 
+	  <input type="text" th:field="*{uscNo}" class="form-control" placeholder="USC NO" />
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Meter Reading:</label>
+    <input type="text" th:field="*{present_reading}" class="form-control" placeholder="Reading" />
+  </div>
+ <div class="col-12">
+    <button type="submit" class="btn btn- primary">Generate</button>
+  </div>
+</form>
+</body>
+</html>
